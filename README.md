@@ -1,3 +1,5 @@
+<img width="4644" height="1080" alt="github_css" src="https://github.com/user-attachments/assets/9a044a3b-0405-4541-9598-17974f126e66" />
+
 # Community for Swift Students (CSS) 🇰🇷
 
 Swift Student Challenge에 관심있는 모두를 위한 커뮤니티<br/>
