@@ -41,7 +41,6 @@ import PencilKit
 
 struct PencilKitCanvasView: UIViewRepresentable {
     
-    @Binding var drawing: PKDrawing
     let canvas = PKCanvasView()
     
     /*
@@ -50,75 +49,19 @@ struct PencilKitCanvasView: UIViewRepresentable {
      요구사항:
      - backgroundColor 설정
      - tool 설정 (PKInkingTool 사용)
-     - drawingPolicy 설정
-     - PKDrawing 바인딩
      - 설정이 완료된 PKCanvasView 반환
      
      참고
      https://developer.apple.com/documentation/pencilkit/pkcanvasview
      */
     func makeUIView(context: Context) -> PKCanvasView {
-        fatalError("구현 필요")
+//        fatalError("구현 필요")
+        canvas.backgroundColor = .darkGray
+        canvas.tool = PKInkingTool(.pencil, color: .black, width: 20)
+        return canvas
     }
-    
-    /*
-     TODO: updateUIView 메소드 구현
-     
-     요구사항:
-     - Binding된 drawing이 변경되면 canvas 업데이트
-     */
-    func updateUIView(_ uiView: PKCanvasView, context: Context) {
-        fatalError("구현 필요")
-    }
-}
 
-
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- MARK: - 2. Drawing Tool 생성
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-
-struct DrawingToolFactory {
-    
-    /*
-     그림을 그리기 위한 툴을 생성하는 팩토리
-     
-     참고
-     https://developer.apple.com/documentation/pencilkit/pkinkingtool-swift.struct/init(_:color:width:)-2l7v
-     */
-    
-    // TODO: Pen 도구 생성
-    static func createPenTool(color: UIColor, width: CGFloat) -> PKInkingTool {
-        fatalError("구현 필요")
-    }
-    
-    // TODO: Pencil 도구 생성
-    static func createPencilTool(color: UIColor, width: CGFloat) -> PKInkingTool {
-        fatalError("구현 필요")
-    }
-    
-    // TODO: Marker 도구 생성
-    static func createMarkerTool(color: UIColor, width: CGFloat) -> PKInkingTool {
-        fatalError("구현 필요")
-    }
-    
-    /*
-     TODO: 지우개 도구 생성
-     
-     요구사항:
-     - PKEraserTool 반환
-     - EraserType 지정 (.vector 또는 .bitmap)
-     */
-    static func createEraserTool(type: PKEraserTool.EraserType) -> PKEraserTool {
-        fatalError("구현 필요")
-    }
-}
-
-
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- MARK: - 3. Drawing 데이터 처리
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-
-class DrawingImageHandler {
+    func updateUIView(_ uiView: PKCanvasView, context: Context) { }
     
     /*
      TODO: Drawing을 이미지로 변환
@@ -126,7 +69,7 @@ class DrawingImageHandler {
      요구사항:
      - PKDrawing을 UIImage로 변환
      */
-    func convertToImage(drawing: PKDrawing, bounds: CGRect, scale: CGFloat) -> UIImage {
+    func convertToImage() -> UIImage {
         fatalError("구현 필요")
     }
     
@@ -134,32 +77,9 @@ class DrawingImageHandler {
      TODO: Drawing 초기화
      
      요구사항:
-     - 빈 PKDrawing 반환
+     - PKCanvasView의 drawing을 빈 PKDrawing로 초기화
      */
-    func clearDrawing() -> PKDrawing {
-        fatalError("구현 필요")
-    }
-}
-
-
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- MARK: - 4. Canvas Delegate 구현
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-
-class CanvasDelegate: NSObject, PKCanvasViewDelegate {
-    
-    var onDrawingChanged: ((PKDrawing) -> Void)?
-    
-    /*
-     TODO: 그리기 변경 감지
-     
-     요구사항:
-     - drawing이 변경되면 클로저 호출
-     
-     참고
-     https://developer.apple.com/documentation/pencilkit/pkcanvasviewdelegate/canvasviewdrawingdidchange(_:)
-     */
-    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+    func clearDrawing() {
         fatalError("구현 필요")
     }
 }

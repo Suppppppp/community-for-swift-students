@@ -17,13 +17,13 @@ struct FeatureRow: View {
             Image(systemName: icon)
                 .font(.title)
                 .foregroundColor(.blue)
-                .frame(width: 40)
+                .frame(width: 50)
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(title)
                     .fontWeight(.semibold)
                 Text(description)
-                    .font(.caption)
+                    .font(.callout)
                     .foregroundColor(.secondary)
             }
         }

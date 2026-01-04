@@ -12,7 +12,7 @@ struct StepCard: View {
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(alignment: .center, spacing: 12) {
             Text("\(step)")
                 .font(.headline)
                 .foregroundColor(.white)
@@ -31,10 +31,12 @@ struct StepCard: View {
                     .fontWeight(.semibold)
                 if let description {
                     Text(description)
-                        .font(.caption)
+                        .font(.callout)
                         .foregroundColor(.secondary)
                 }
             }
+            Spacer()
         }
+        .frame(maxWidth: .infinity)
     }
 }

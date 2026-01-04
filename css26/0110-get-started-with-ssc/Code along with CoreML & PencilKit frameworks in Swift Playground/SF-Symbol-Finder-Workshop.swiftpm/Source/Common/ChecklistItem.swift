@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ChecklistItem: View {
     let text: String
+    @State private var isChecked = false
 
     var body: some View {
         HStack {
-            Image(systemName: "square")
+            Image(systemName: isChecked ? "checkmark.square.fill" : "square")
                 .foregroundColor(.blue)
             Text(text)
                 .font(.subheadline)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            isChecked.toggle()
         }
     }
 }

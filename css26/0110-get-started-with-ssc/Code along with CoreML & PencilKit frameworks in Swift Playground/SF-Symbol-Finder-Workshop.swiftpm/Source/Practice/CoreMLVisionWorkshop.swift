@@ -35,7 +35,6 @@ import Vision
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
 
-
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  MARK: - 1. CoreML 모델 로드
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
@@ -46,13 +45,9 @@ class CoreMLModelLoader {
      TODO: CoreML 모델 로드
      
      요구사항:
-     - MLModel 타입의 모델 로드
-     - MLModelConfiguration 사용
-     
-     힌트:
-     - let config = MLModelConfiguration()
-     - let model = try SFSymbolClassifier(configuration: config)
-     - return model.model
+     - MLModelConfiguration 생성
+     - SFSymbolClassifier(configuration:) 초기화
+     - 초기화한 분류모델의 model을 반환
      */
     func loadCoreMLModel() throws -> MLModel {
         fatalError("구현 필요")
@@ -91,14 +86,6 @@ class ImageClassifier {
      
      참고
      https://developer.apple.com/documentation/vision/vncoremlrequest/init(model:completionhandler:)
-     
-     힌트:
-     - let request = VNCoreMLRequest(model: model) { request, error in
-     guard let results = request.results as? [VNClassificationObservation]
-     else { return }
-     completion(results)
-     }
-     - return request
      */
     func createRequest(
         model: VNCoreMLModel,
@@ -138,7 +125,7 @@ class ImageClassifier {
 struct ClassificationResult: Identifiable {
     let id = UUID()
     let identifier: String
-    let confidence: Double
+    let confidence: Int
 }
 
 class ResultProcessor {
@@ -149,20 +136,20 @@ class ResultProcessor {
      요구사항:
      - confidence 기준 내림차순 정렬
      - 상위 N개만 반환
-     
-     힌트:
-     - observations.sorted { $0.confidence > $1.confidence }
-     - .prefix(topK)
-     - Array(...)
      */
     func sortAndFilter(
         observations: [VNClassificationObservation],
         length: Int
     ) -> [VNClassificationObservation] {
-        fatalError("구현 필요")
+        fatalError("구현 필요")    
     }
     
-    /* TODO: VNClassificationObservation을 ClassificationResult로 변환 */
+    /* 
+     TODO: VNClassificationObservation을 ClassificationResult로 변환 
+     
+     요구사항:
+     - confidence를 백분율로 변환합니다
+     */
     func convertToResults(
         observations: [VNClassificationObservation]
     ) -> [ClassificationResult] {
