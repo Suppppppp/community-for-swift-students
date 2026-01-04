@@ -8,17 +8,17 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "HelloSSC_FACE AR얼굴 인식",
+    name: "Explore ARKit in Swift Playground",
     platforms: [
         .iOS("18.1")
     ],
     products: [
         .iOSApplication(
-            name: "HelloSSC_FACE AR얼굴 인식",
+            name: "Explore ARKit in Swift Playground",
             targets: ["AppModule"],
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .smiley),
+            appIcon: .placeholder(icon: .bunny),
             accentColor: .presetColor(.pink),
             supportedDeviceFamilies: [
                 .pad,
